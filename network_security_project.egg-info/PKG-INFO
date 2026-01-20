@@ -6,6 +6,7 @@ Author-email: oday.najad@lau.edu
 Requires-Dist: python-dotenv
 Requires-Dist: pandas
 Requires-Dist: numpy
+Requires-Dist: pymongo[srv]==3.12
 Requires-Dist: pymongo
 Requires-Dist: certifi
 Dynamic: author
