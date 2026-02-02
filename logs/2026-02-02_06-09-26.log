@@ -1,0 +1,22 @@
+[2026-02-02 06:09:28,998: INFO: data_ingestion]: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[2026-02-02 06:09:28,998: INFO: main]: Initializing data ingestion
+[2026-02-02 06:09:28,998: INFO: data_ingestion]: Initiating data ingestion
+[2026-02-02 06:09:28,998: INFO: data_ingestion]: Exporting collection data as dataframe
+[2026-02-02 06:09:29,287: INFO: data_ingestion]: Connected to Mongodb successfully to export data
+[2026-02-02 06:09:30,831: INFO: data_ingestion]: Dataframe shape: (11055, 32)
+[2026-02-02 06:09:30,831: INFO: data_ingestion]: Dropping column: _id
+[2026-02-02 06:09:30,839: INFO: data_ingestion]: Creating feature store folder if not available: Artifacts/02_02_2026_06_09_27/data_ingestion/feature_store
+[2026-02-02 06:09:30,839: INFO: data_ingestion]: Saving data to feature store folder: Artifacts/02_02_2026_06_09_27/data_ingestion/feature_store/phishingData.csv
+[2026-02-02 06:09:30,946: INFO: data_ingestion]: Splitting data into train and test set with test size: 0.2
+[2026-02-02 06:09:30,950: INFO: data_ingestion]: Creating ingested folder if not available: Artifacts/02_02_2026_06_09_27/data_ingestion/ingested_data
+[2026-02-02 06:09:30,950: INFO: data_ingestion]: Saving training data to file: Artifacts/02_02_2026_06_09_27/data_ingestion/ingested_data/train.csv
+[2026-02-02 06:09:31,023: INFO: data_ingestion]: Saving testing data to file: Artifacts/02_02_2026_06_09_27/data_ingestion/ingested_data/test.csv
+[2026-02-02 06:09:31,044: INFO: data_ingestion]: Data ingestion completed successfully
+[2026-02-02 06:09:31,044: INFO: data_ingestion]: Data Ingestion Artifact: DataIngestionArtifact(train_file_path='Artifacts/02_02_2026_06_09_27/data_ingestion/ingested_data/train.csv', test_file_path='Artifacts/02_02_2026_06_09_27/data_ingestion/ingested_data/test.csv')
+[2026-02-02 06:09:31,044: INFO: main]: Completed data ingestion
+[2026-02-02 06:09:31,060: INFO: main]: Initializing data validation
+[2026-02-02 06:09:31,087: INFO: data_validation]: Required number of columns:2
+[2026-02-02 06:09:31,087: INFO: data_validation]: Data frame has columns:31
+[2026-02-02 06:09:31,087: INFO: data_validation]: Required number of columns:2
+[2026-02-02 06:09:31,087: INFO: data_validation]: Data frame has columns:31
+[2026-02-02 06:09:31,342: INFO: main]: Completed data validation
