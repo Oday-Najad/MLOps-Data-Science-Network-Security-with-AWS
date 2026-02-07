@@ -49,6 +49,24 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
           IMAGE_TAG: latest
         run: |
+          # Fail fast if repository name is not provided
+          if [ -z "$ECR_REPOSITORY" ]; then
+            echo "ERROR: ECR_REPOSITORY secret is not set. Set 'ECR_REPOSITORY_NAME' in repo Secrets (Settings → Secrets).";
+            exit 1;
+          fi
+
+          echo "Pushing image to: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+          # Create the ECR repository if it doesn't exist (idempotent)
+          if ! aws ecr describe-repositories --repository-names "$ECR_REPOSITORY" >/dev/null 2>&1; then
+            echo "ECR repository '$ECR_REPOSITORY' not found — creating it now"
+            aws ecr create-repository --repository-name "$ECR_REPOSITORY" || {
+              echo "Failed to create ECR repository"; exit 1;
+            }
+          else
+            echo "ECR repository '$ECR_REPOSITORY' already exists"
+          fi
+
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "Image pushed to Amazon ECR: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
