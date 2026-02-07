@@ -1,8 +1,10 @@
+from fastapi.templating import Jinja2Templates
 from networksecurity.constants.training_pipeline import DATA_INGESTION_DATABASE_NAME
 from networksecurity.constants.training_pipeline import DATA_INGESTION_COLLECTION_NAME
 from networksecurity.utils.main_utils.utils import load_object
 from uvicorn import run as app_run
 import pandas as pd
+from networksecurity.utils.ml_utils.model.estimator import NetworkModel
 from starlette.responses import RedirectResponse
 from fastapi.responses import Response
 from fastapi import FastAPI, File, UploadFile, Request
@@ -43,6 +45,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+templates = Jinja2Templates(directory="./templates")
+
 
 @app.get("/", tags=["authentication"])
 async def index():
@@ -55,6 +59,26 @@ async def train_route():
         train_pipeline = TrainingPipeline()
         train_pipeline.run_pipeline()
         return Response(content="Training successful!!")
+    except Exception as e:
+        raise NetworkSecurityException(e, sys)
+
+
+@app.post("/predict", tags=["predict"])
+async def predict_route(request: Request, file: UploadFile = File(...)):
+    try:
+        df = pd.read_csv(file.file)
+        preprocessor = load_object(file_path="final_models/preprocessor.pkl")
+        final_model = load_object(file_path="final_models/model.pkl")
+        network_model = NetworkModel(
+            preprocessor=preprocessor, model=final_model)
+        print(df.iloc[0])  # Print first row of the DataFrame
+        y_pred = network_model.predict(df)
+        print(y_pred)
+        df['predicted_column'] = y_pred
+        print(df['predicted_column'])
+        df.to_csv("networksecurity/prediction_output/output.csv")
+        table_html = df.to_html(classes="table table-striped")
+        return templates.TemplateResponse("table.html", {"request": request, "table": table_html})
     except Exception as e:
         raise NetworkSecurityException(e, sys)
 
