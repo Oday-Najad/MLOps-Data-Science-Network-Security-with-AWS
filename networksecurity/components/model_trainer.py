@@ -30,12 +30,9 @@ from urllib.parse import urlparse
 
 import dagshub
 
-# os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/Oday-Najad/network-security.mlflow"
-# os.environ["MLFLOW_TRACKING_USERNAME"] = "krishnaik06"
-# os.environ["MLFLOW_TRACKING_PASSWORD"] = "7104284f1bb44ece21e0e2adb4e36a250ae3251f"
 
 dagshub.init(repo_owner='Oday-Najad',
-             repo_name='network-security', mlflow=True)
+             repo_name='MLOps-Data-Science-Network-Security-with-AWS', mlflow=True)
 
 
 # End MLFLOW and DagsHub integration
@@ -52,9 +49,10 @@ class ModelTrainer:
     #  MLflow tracking
     def track_mlflow(self, best_model, classificationmetric):
         mlflow.set_registry_uri(
-            "https://dagshub.com/Oday-Najad/network-security.mlflow")
-        dagshub.init(repo_owner='Oday-Najad',
-                     repo_name='network-security', mlflow=True)
+            # Set the registry URI to DagsHub
+            "https://dagshub.com/Oday-Najad/MLOps-Data-Science-Network-Security-with-AWS.mlflow")
+        # dagshub.init(repo_owner='Oday-Najad',
+        #              repo_name='network-security', mlflow=True)
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         with mlflow.start_run():
             f1_score = classificationmetric.f1_score
