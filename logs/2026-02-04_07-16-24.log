@@ -1,0 +1,41 @@
+[2026-02-04 07:16:29,209: INFO: _client]: HTTP Request: POST https://dagshub.com/login/oauth/middleman "HTTP/1.1 200 OK"
+[2026-02-04 07:16:29,639: INFO: _client]: HTTP Request: POST https://dagshub.com/login/oauth/access_token "HTTP/1.1 200 OK"
+[2026-02-04 07:16:30,068: INFO: _client]: HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-02-04 07:16:30,070: INFO: helpers]: Accessing as Oday-Najad
+[2026-02-04 07:16:30,558: INFO: _client]: HTTP Request: GET https://dagshub.com/api/v1/repos/Oday-Najad/network-security "HTTP/1.1 200 OK"
+[2026-02-04 07:16:31,082: INFO: _client]: HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-02-04 07:16:31,084: INFO: helpers]: Initialized MLflow to track repo "Oday-Najad/network-security"
+[2026-02-04 07:16:31,084: INFO: helpers]: Repository Oday-Najad/network-security initialized!
+[2026-02-04 07:16:31,084: INFO: data_ingestion]: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[2026-02-04 07:16:31,085: INFO: main]: Initializing data ingestion
+[2026-02-04 07:16:31,085: INFO: data_ingestion]: Initiating data ingestion
+[2026-02-04 07:16:31,085: INFO: data_ingestion]: Exporting collection data as dataframe
+[2026-02-04 07:16:31,282: INFO: data_ingestion]: Connected to Mongodb successfully to export data
+[2026-02-04 07:16:32,933: INFO: data_ingestion]: Dataframe shape: (11055, 32)
+[2026-02-04 07:16:32,934: INFO: data_ingestion]: Dropping column: _id
+[2026-02-04 07:16:32,949: INFO: data_ingestion]: Creating feature store folder if not available: Artifacts/02_04_2026_07_16_25/data_ingestion/feature_store
+[2026-02-04 07:16:32,950: INFO: data_ingestion]: Saving data to feature store folder: Artifacts/02_04_2026_07_16_25/data_ingestion/feature_store/phishingData.csv
+[2026-02-04 07:16:33,187: INFO: data_ingestion]: Splitting data into train and test set with test size: 0.2
+[2026-02-04 07:16:33,195: INFO: data_ingestion]: Creating ingested folder if not available: Artifacts/02_04_2026_07_16_25/data_ingestion/ingested_data
+[2026-02-04 07:16:33,196: INFO: data_ingestion]: Saving training data to file: Artifacts/02_04_2026_07_16_25/data_ingestion/ingested_data/train.csv
+[2026-02-04 07:16:33,377: INFO: data_ingestion]: Saving testing data to file: Artifacts/02_04_2026_07_16_25/data_ingestion/ingested_data/test.csv
+[2026-02-04 07:16:33,421: INFO: data_ingestion]: Data ingestion completed successfully
+[2026-02-04 07:16:33,421: INFO: data_ingestion]: Data Ingestion Artifact: DataIngestionArtifact(train_file_path='Artifacts/02_04_2026_07_16_25/data_ingestion/ingested_data/train.csv', test_file_path='Artifacts/02_04_2026_07_16_25/data_ingestion/ingested_data/test.csv')
+[2026-02-04 07:16:33,421: INFO: main]: Completed data ingestion
+[2026-02-04 07:16:33,456: INFO: main]: Initializing data validation
+[2026-02-04 07:16:33,510: INFO: data_validation]: Required number of columns:2
+[2026-02-04 07:16:33,510: INFO: data_validation]: Data frame has columns:31
+[2026-02-04 07:16:33,510: INFO: data_validation]: Required number of columns:2
+[2026-02-04 07:16:33,510: INFO: data_validation]: Data frame has columns:31
+[2026-02-04 07:16:34,022: INFO: main]: Completed data validation
+[2026-02-04 07:16:34,022: INFO: main]: data Transformation started
+[2026-02-04 07:16:34,023: INFO: data_transformation]: Entered initiate_data_transformation method of DataTransformation class
+[2026-02-04 07:16:34,023: INFO: data_transformation]: Starting data transformation
+[2026-02-04 07:16:34,078: INFO: data_transformation]: Entered get_data_trnasformer_object method of Trnasformation class
+[2026-02-04 07:16:34,079: INFO: data_transformation]: Initialise KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[2026-02-04 07:16:34,110: INFO: utils]: Entered the save_object method of MainUtils class
+[2026-02-04 07:16:34,124: INFO: utils]: Exited the save_object method of MainUtils class
+[2026-02-04 07:16:34,124: INFO: utils]: Entered the save_object method of MainUtils class
+[2026-02-04 07:16:34,138: INFO: utils]: Exited the save_object method of MainUtils class
+[2026-02-04 07:16:34,139: INFO: main]: data Transformation completed
+[2026-02-04 07:16:34,139: INFO: main]: Model Training stared
