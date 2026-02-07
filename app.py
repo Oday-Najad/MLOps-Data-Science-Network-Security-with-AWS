@@ -67,8 +67,8 @@ async def train_route():
 async def predict_route(request: Request, file: UploadFile = File(...)):
     try:
         df = pd.read_csv(file.file)
-        preprocessor = load_object(file_path="final_models/preprocessor.pkl")
-        final_model = load_object(file_path="final_models/model.pkl")
+        preprocessor = load_object(file_path="final_model/preprocessor.pkl")
+        final_model = load_object(file_path="final_model/model.pkl")
         network_model = NetworkModel(
             preprocessor=preprocessor, model=final_model)
         print(df.iloc[0])  # Print first row of the DataFrame

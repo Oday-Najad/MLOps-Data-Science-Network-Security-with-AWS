@@ -147,7 +147,10 @@ class ModelTrainer:
         save_object(
             self.model_trainer_config.trained_model_file_path, obj=NetworkModel)
         # model pusher
-        save_object("final_models/model.pkl", best_model)
+        # save model and preprocessor to a stable final_model folder for prediction
+        save_object("final_model/model.pkl", best_model)
+        save_object("final_model/preprocessor.pkl", preprocessor)
+        save_object("final_model/network_model.pkl", Network_Model)
 
         # Model Trainer Artifact
         model_trainer_artifact = ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,

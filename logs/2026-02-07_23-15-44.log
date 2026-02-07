@@ -1,0 +1,6 @@
+[2026-02-07 23:15:46,806: INFO: _client]: HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-02-07 23:15:46,875: INFO: helpers]: Accessing as Oday-Najad
+[2026-02-07 23:15:47,830: INFO: _client]: HTTP Request: GET https://dagshub.com/api/v1/repos/Oday-Najad/MLOps-Data-Science-Network-Security-with-AWS "HTTP/1.1 200 OK"
+[2026-02-07 23:15:48,752: INFO: _client]: HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-02-07 23:15:48,753: INFO: helpers]: Initialized MLflow to track repo "Oday-Najad/MLOps-Data-Science-Network-Security-with-AWS"
+[2026-02-07 23:15:48,753: INFO: helpers]: Repository Oday-Najad/MLOps-Data-Science-Network-Security-with-AWS initialized!
